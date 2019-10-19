@@ -1,0 +1,485 @@
+%<*driver>
+%%!TEX TS-program = latexmk -r dtxmk.latexmkrc -pdfxe
+\input docstrip.tex
+\askforoverwritefalse
+\edef\qnspbl{\perCent\space This is a LaTeX file.  It is a text file that is compiled^^J%
+\perCent\space by a program called LaTeX into a pretty PDF file.^^J%
+\perCent\space If you're viewing this file in Overleaf, you'll see that PDF^^J%
+\perCent\space in the window to the right.^^J%
+\perCent^^J%
+\perCent\space This file is for typesetting the QUESTIONS in this homework assignment.^^J%
+\perCent\space You can read the source code to learn more about how specific math^^J%
+\perCent\space expressions are encoded in the LaTeX language. But you will edit a copy^^J%
+\perCent\space of the file '\jobname.ans.tex' instead.^^J%
+\perCent}
+\edef\anspbl{\perCent\space This is a LaTeX file.  It is a text file that is compiled^^J%
+\perCent\space by a program called LaTeX into a pretty PDF file.^^J%
+\perCent\space If you're viewing this file in Overleaf, you'll see that PDF^^J%
+\perCent\space in the window to the right.^^J%
+\perCent^^J%
+\perCent\space This file is for typesetting YOUR ANSWERS to this homework assignment.^^J%
+\perCent\space The LaTeX macro language is complicated, so we have inserted lots of^^J%
+\perCent\space documenting comments into the file.  Comments start with '\perCent'^^J%
+\perCent\space and continue to the end of the line.  In Overleaf's edit window, they^^J%
+\perCent\space are colored green.^^J%
+\perCent\space ^^J%
+\perCent\space Comments prefixed with 'Student:' are relevant to students. Skip any-^^J%
+\perCent\space thing else you don't understand, or ask me.^^J%
+}
+\edef\solpbl{\perCent\space This is a LaTeX file.  It is a text file that is compiled^^J%
+\perCent\space by a program called LaTeX into a pretty PDF file.^^J%
+\perCent\space If you're viewing this file in Overleaf, you'll see that PDF^^J%
+\perCent\space in the window to the right.^^J%
+\perCent^^J%
+\perCent\space This file is for typesetting SOLUTIONS AND REMARKS for this homework^^J
+\perCent\space assignment.  As with the questions file, you can read the source code^^J%
+\perCent\space if you want to know how I typeset the math that appears in the PDF.%
+}
+\generate{
+    \usepreamble\qnspbl\file{\jobname.qns.tex}{\from{\jobname.dtx}{questions}}
+    \usepreamble\anspbl\file{\jobname.ans.tex}{\from{\jobname.dtx}{questions,answers}}
+    \usepreamble\solpbl\file{\jobname.sol.tex}{\from{\jobname.dtx}{questions,solutions}}
+}
+\endbatchfile
+%</driver>
+%<*questions>
+\documentclass{article}
+%% This is some font management depending on the TeX “engine” being used.
+%% Nothing to worry about.
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\fi
+
+%% Student: These lines describe some document metadata.
+\title{Homework Assignment 2}
+\usepackage{etoolbox}
+%<answers>\makeatletter\preto{\@title}{Answers to }\makeatother
+%<solutions>\makeatletter\preto{\@title}{Solutions to }\makeatother
+\author{%
+%<!answers>    Prof. Leingang
+%<*answers>
+\GenericWarning{}{LaTeX Warning: Please change ``Sally Student'' to your name}% Delete this line when you have done this
+    Sally Student
+%</answers>
+\\  MATH-UA 120.005 Discrete Mathematics
+}
+\date{due September 13 at 12:00noon}
+
+
+%% These lines set up the question, answer, and solution environments.
+\usepackage{amsthm}
+\usepackage{amssymb}
+%<!answers&!solutions>\theoremstyle{definition}
+%<answers|solutions>\theoremstyle{plain}
+\newtheorem{question}{Question}
+
+\newenvironment{answer}[1][Answer]
+    {\begin{proof}[#1]\renewcommand\qedsymbol{$\vartriangle$}}
+    {\end{proof}}
+\newenvironment{solution}[1][Solution]
+    {\begin{proof}[#1]\renewcommand\qedsymbol{$\blacktriangle$}}
+    {\end{proof}}
+% These make enumerates within questions start at the second ("(a)") level, 
+% rather than the first ("1.") level.
+\makeatletter
+    \newcommand{\stepenumdepth}{\advance\@enumdepth\@ne}
+\makeatother
+\AtBeginEnvironment{question}{\stepenumdepth}
+\AtBeginEnvironment{answer}{\stepenumdepth}
+\AtBeginEnvironment{solution}{\stepenumdepth}
+
+\usepackage{amsmath}
+\usepackage{siunitx}
+
+\usepackage{hyperref}
+%% This is the beginning of the part of the file that describes
+%% the actual text of the document.
+%% That's why it says `\begin{document}' below. :-)
+\begin{document}
+\maketitle
+
+%<*!answers&!solutions>
+\section*{Reading and Practice}
+
+Read sections 6--9 of the textbook.  
+
+\begin{itemize}
+\item In Section 6, make sure you understand what a counterexample is, and how to use it to disprove a statement
+\item In Section 7, know the basic Boolean algebra operations and identities, and how to prove equations with and without truth tables
+\item In Section 8, know how to count lists, and the multiplication principle
+\item In Section 9, know how to count rearrangements using factorials.
+\end{itemize}
+
+
+Try these problems for practice: 
+\begin{itemize}
+    \item Section 6: 2, 4, 5, 7, 15
+    \item Section 7: 1, 2, 10, 11, 12
+    \item Section 8: 1, 3, 5, 7, 9
+    \item Section 9: 1, 5, 7
+\end{itemize}    
+   
+
+\section*{Assigned Problems}
+
+%</!answers&!solutions>
+
+
+\begin{question}
+    Scheinerman, Exercise 6.6:
+    Disprove: if $p$ is prime, then $2^p-1$ is also prime.
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    Let $p=11$.  Then $p$ is prime.  But $2^p-1 = 2^{11}-1 = 2047 = 23 \times 89$.
+    So the statement is false.
+    
+    A prime number that is equal to $2^n-1$ for some $n$ is called a \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
+\end{solution}
+%</solutions>
+
+\begin{question}
+    Scheinerman, Exercise 6.8:
+    An integer is called a \emph{palindrome} provided
+    it reads the same forwards and backwards in its base-ten
+    representation.  For example, 1331 is a palindrome.
+    
+    Disprove: all palidromes with two or more digits are
+    divisble by $11$.
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    Let $n = 101$.  Then $n$ is a palindrome.
+    But $9\times 11 = 99$ and $10\times 11 = 110$.  Since there are no multiples of $11$ between these, $101$ is not prime.
+\end{solution}
+%</solutions>
+
+
+\begin{question}
+    Scheinerman, Exercise 7.12:
+    Another method to prove that certain Boolean formulas
+    are tautologies is to use the properties in Theorem~7.2
+    together with the fact that $x \rightarrow y$ is equivalent
+    to $(\neg x) \vee y$ (Proposition~7.3)
+    For example, Exercise 7.11, part (b) asks you to establish that the formula $(x \wedge (x \rightarrow y)) \rightarrow y$ is 
+    a tautology.  Here is a derivation of that fact:
+    % This is an "align" environment for aligning
+    % mathematical equations.  Ampersands (&) denote 
+    % separation between columns.  The first one means
+    % there will be alignment around the equal sign.
+    % The double-ampersands put a second column, left-
+    % justified.  Double-backslashes (\\) separate lines.
+    \begin{align*}
+        (x \wedge (x \rightarrow y)) \rightarrow y
+        &= [x \wedge (\neg x \vee y)] \rightarrow y
+        && \text{translate $\rightarrow$} 
+        \\
+        &= [(x \wedge \neg x) \vee (x \wedge y)] \rightarrow y
+        && \text{distributive}
+        \\
+        &= [\mathrm{FALSE} \vee (x\wedge y)] \rightarrow y
+        && \text{inverse elements}
+        \\
+        &= (x\wedge y) \rightarrow y
+        && \text{identity element}
+        \\
+        &= \neg(x\wedge y) \vee y
+        && \text{translate $\rightarrow$}
+        \\
+        &= (\neg x \vee \neg y) \vee y
+        && \text{De~Morgan's laws}
+        \\
+        &= \neg x \vee (\neg y \vee y)
+        && \text{associativity}
+        \\
+        &= \neg x \vee \mathrm{TRUE}
+        && \text{inverse elements}
+        \\
+        &= \mathrm{TRUE}
+        && \text{identity element}
+        \\
+    \end{align*}
+    Use this technique [not truth tables] to prove that these formulas
+    are tautologies:
+    \begin{enumerate}
+        \item $(x \vee y) \vee (x \vee \neg y)$
+        \item $(x \wedge (x \rightarrow y))\rightarrow y$
+        \item $\neg(\neg x) \leftrightarrow x$
+        \item $x \rightarrow x$
+        \item $((x \rightarrow y) \wedge (y \rightarrow z)) )\rightarrow (x \rightarrow z)$
+        \item $\mathrm{FALSE} \rightarrow x$
+        \item $(x \rightarrow \mathrm{FALSE}) \rightarrow \neg x$
+        \item $(x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x$
+    \end{enumerate}
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{proof}
+\end{proof}
+%</answers>
+%<*solutions>
+\begin{proof}
+    \begin{enumerate}
+        \item Factor out $x\vee$ from both:
+        \[
+            (x \vee y) \vee (x \vee \neg y)
+            = x \vee (y \vee \neg y) = x \vee \mathrm{TRUE} = \mathrm{TRUE}
+        \]
+        \item Rewrite the $\to$ in terms of $\vee$:
+        \begin{align*}
+            (x \wedge (x \rightarrow y))\rightarrow y
+            &= \neg(x \wedge (x \rightarrow y))\vee y 
+            \\&= \neg x \vee \neg(\neg x\vee y)) \vee y 
+            \\&= (\neg x \vee (x \wedge \neg y)) \vee y 
+            \\&= ((\neg x \vee x) \wedge (\neg x \vee \neg y)) \vee y
+            \\&= (\mathrm{TRUE} \wedge (\neg x \vee \neg y)) \vee y
+               = (\neg x \vee \neg y) \vee y
+            \\&= \neg x \vee (\neg y \vee y)
+               = \neg x \vee \mathrm{TRUE}
+               = \mathrm{TRUE}
+        \end{align*}
+        \item If we allow that $x \rightarrow x = \mathrm{TRUE}$ (the next part),
+        then
+        \[
+            \neg (\neg x) \leftrightarrow x
+            = x \leftrightarrow x
+            = (x \rightarrow x) \wedge (x \rightarrow x)
+            = \mathrm{TRUE} \wedge \mathrm{TRUE} = \mathrm{TRUE}
+        \]
+        
+        \item Now
+        \(
+            x\rightarrow x = \neg x \vee x = \mathrm{TRUE}
+        \)
+        \item
+        \begin{align*}
+            ((x \rightarrow y) \wedge (y \rightarrow z)) )\rightarrow (x \rightarrow z)
+            &= \neg((\neg x \vee y) \wedge (\neg y \vee z))\vee (\neg x \vee z)
+          \\&= (\neg(\neg x \vee y) \vee \neg (\neg y \vee z))\vee (\neg x \vee z)
+          \\&= (x \wedge \neg y) \vee (y \wedge \neg z) \vee (\neg x \vee z)
+          \\&= (\neg x \vee (x \wedge \neg y)) 
+               \vee ((y \wedge \neg z) \vee  z)
+          \\&= ((\neg x \vee x) \wedge (\neg x \vee \neg y))
+               \vee ((y \vee z) \wedge (\neg z \vee z))
+          \\&= (\mathrm{TRUE} \wedge (\neg x \vee \neg y))
+               \vee ((y \vee z) \wedge \mathrm{TRUE})
+          \\&= (\neg x \vee \neg y) \vee (y \vee z)
+          \\&= \neg x \vee (\neg y \vee y) \vee z
+          \\&= \neg x \vee \mathrm{TRUE} \vee z = \mathrm{TRUE}
+        \end{align*}
+        \item $\mathrm{FALSE} \rightarrow x = \mathrm{TRUE} \vee x = \mathrm{TRUE}$
+        \item
+        \begin{align*}
+            (x \rightarrow \mathrm{FALSE}) \rightarrow \neg x
+            &=\neg(\neg x \vee \mathrm{FALSE}) \vee \neg x
+          \\&=(x \wedge \mathrm{TRUE}) \vee \neg x 
+          \\&=(x \vee \neg x)\wedge(\mathrm{TRUE} \vee \neg x) 
+          \\&= \mathrm{TRUE} \wedge \mathrm{TRUE} = \mathrm{TRUE}
+        \end{align*}
+        \item
+        \begin{align*}
+            (x \rightarrow y) \wedge (x \rightarrow \neg y) \rightarrow \neg x
+            &= \neg((\neg x \vee y) \wedge (\neg x \vee \neg y)) \vee \neg x
+          \\&= (\neg(\neg x \vee y) \vee \neg(\neg x \vee \neg y)) \vee \neg x
+          \\&= ((x \wedge \neg y) \vee (x \wedge y)) \vee \neg x
+          \\&= (x \wedge (\neg y \vee y))\vee \neg x
+          \\&= (x \wedge \mathrm{TRUE}) \vee \neg x
+          \\&= x \vee \neg x = \mathrm{TRUE}
+        \end{align*}
+    \end{enumerate}
+\end{proof}
+%</solutions>
+
+%<*skip>
+\begin{question}
+    Scheinerman, Exercise 7.19:
+    Prove that $x \vee y$ can be expressed in terms of
+    just $\wedge$ and $\neg$, so all boolean operations
+    can be reduced to just two.
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+
+\begin{question}
+    Scheinerman, Exercise 7.20:
+    Here is yet another boolean operation called 
+    \emph{nand}.  It is denoted by the symbol $\bar\wedge$.
+    We define $x \bar\wedge y$ to be $\neg(x\wedge y)$.
+    Do the following:
+    \begin{enumerate}
+        \item Construct a truth table for $\bar\wedge$.
+        \item Is the operation $\bar\wedge$ commutative? Associative?
+        \item Show how the operations $x \rightarrow y$
+        and $\neg x$ can be expressed just in terms of $\bar\wedge$.
+        \item Conclude that all binary boolean operations 
+        can be expressed just in terms of $\bar\wedge$ alone.
+    \end{enumerate}
+\end{question}
+% Student: put your answer between the next two lines.
+\begin{solution}
+\end{solution}
+%</skip>
+
+\begin{question}
+    Scheinerman, Exercise 8.13:
+    Let $n$ be a positive integer.
+    Prove that $n^2 = (n)_2 + n$ in two different ways.
+
+    First (and more simply), show this equation is true algebraically.
+    
+    Second (and more interestingly), interpret the terms $n^2$, $(n)_2$, and $n$
+    in the context of list counting as use that to argue why the equation must
+    be true.
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    \begin{enumerate}
+        \item The algebraic proof:
+        \[
+            (n)_2 + n = n(n-1) + n = n^2-n+n = n^2
+        \]
+        \item the combinatorial proof: Consider all lists of elements $(i,j)$, where $i$ and $j$ come from $1,2,\dots,n$.  There are obviously $n^2$ of these.
+        But there are $n$ of them which satisfy $i=j$, and $(n)_2$ of them which satisfy $i \neq j$.  So $n^2 = (n)_2 + n$.
+    \end{enumerate}
+\end{solution}
+%</solutions>
+
+\begin{question}
+    Scheinerman, Exercise 8.15:
+    How many five-digit numbers are there that do not have two consecutive digits
+    the same?  For example, you would count 12104 and 12397 but not 6321 (it is
+    not five digits) or 43356 (it has two consecutive 3s).
+    
+    Note: the first digit may not be a zero.
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    The first digit has nine choices: anything from $1$ to $9$.
+    The second digit has nine choices, too: anything from $0$ to $9$, but not counting whatever the first digit is.
+    The same is true of the third, fourth, and fifth digits.
+    Therefore, by the Multiplication Principle, the number of numbers is $9^5$.
+\end{solution}
+%</solutions>
+
+
+\begin{question}
+    Scheinerman, Exercise 8.19:
+    Four cards are drawn from a standard deck of 52 cards.
+    In how many ways can this be done if the cards are all of different values
+    (e.g., no two 5s or two jacks) and all different suits?
+    (For this problem, the order in which the cards are drawn matters,
+    so drawing A$\spadesuit$-K$\heartsuit$-3$\diamondsuit$-6$\clubsuit$
+    is not the same a drawing 6$\clubsuit$-K$\heartsuit$-3$\diamondsuit$-A$\spadesuit$
+    even though the same cards are selected.)
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    There are 13 ranks and 4 suits.  
+    The first card can be any rank and any suit.
+    The second card may be of any of the 12 remaining ranks and 3 remaining suits.
+    The third card may be of any of the 11 remaining ranks and 2 remaining suites.
+    The fourth card may be of any of the 10 remaining ranks and 1 remaining suit.
+    So the number of hands is
+    \[
+        (13)_4 \times 4! = \num{411840}
+    \]
+\end{solution}
+%</solutions>
+
+
+\begin{question}
+    Scheinerman, Exercise 9.8:
+    Calculate the following products.
+    \begin{enumerate}
+        \item $\prod_{k=1}^4(2k+1)$
+        \item $\prod_{k=-3}^4k$
+        \item $\prod_{k=1}^n \frac{k+1}{k}$, where $n$ is a positive integer
+        \item $\prod_{k=1}^n \frac{1}{k}$, where $n$ is a positive integer
+    \end{enumerate}
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    \begin{enumerate}
+        \item \[\prod_{k=1}^4(2k+1)
+            = (2\times 1 + 1)(2 \times 2 +1)(2 \times 3 +1(2\times 4+1)
+            = 3 \times 5 \times 7 \times 9 = 945
+        \]
+        \item \[\prod_{k=-3}^4k
+            =(-3)(-2)(-1)(0)(1)(2)(3)(4)=0
+        \]
+        \item When expanding the product, everything cancels except
+        the last numerator and the first denominator:
+        \[\prod_{k=1}^n \frac{k+1}{k} =
+           \frac{2}{1}\times\frac{3}{2}\times\frac{4}{3}
+           \times\dots\times\frac{n+1}{n} = n+1
+        \]
+        \item \[
+            \prod_{k=1}^n \frac{1}{k}
+            = \frac{1}{1} \times \frac{1}{2} \times \cdots \times \frac{1}{n} = \frac{1}{n!}
+        \]
+    \end{enumerate}
+\end{solution}
+%</solutions>
+
+
+\begin{question}
+    Scheinerman, Exercise 9.10:
+    When $100!$ is written out in full, it equals
+    \[
+        100! = 9332621\dots000000
+    \]
+    Without using a computer, determine the number of $0$ digits at the end
+    of this number.
+\end{question}
+%<*answers>
+%% Student: put your answer between the next two lines.
+\begin{answer}
+\end{answer}
+%</answers>
+%<*solutions>
+\begin{solution}
+    In $1\times 2\times 3\times \cdots\times100$ there are $24$ factors of $5$:
+    $20$ from the numbers $5$, $10$, $15$, $\ldots$, plus $4$ more from $25$,
+    $50$, $75$, and $100$. There are more factors of $2$. So all told there are
+    $24$ factors of $10$ in $100!$, so in base-10, $100!$ ends in $24$ zeros.
+\end{solution}
+%</solutions>
+
+\end{document}
+%</questions>
