@@ -240,6 +240,11 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# ignore derivative files
 hw02.ans.tex
 hw02.qns.tex
 hw02.sol.tex
+hw02.ans.pdf
+hw02.qns.pdf
+hw02.sol.pdf
