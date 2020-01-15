@@ -57,23 +57,23 @@ The macro `\jobname` expands to the current file name, without extension.  The
 command `\endbatchfile` ends DocStrip processing.
 
 
-For instance, assume the excerpt above is taken from a file called `hw.dtx`.
-The command `tex hw.dtx` will process `hw.dtx` with DocStrip.  Three files will
-be generated:
+For instance, the excerpt above is taken from a file called `hw02.dtx`, included
+in this repository.  The command `tex hw02.dtx` will process `hw02.dtx` with
+DocStrip.  Three files will be generated:
 
-  * a file `hw.qns.tex`, from the file `hw.dtx` with the `questions` option
+  * a file `hw02.qns.tex`, from the file `hw02.dtx` with the `questions` option
     turned on
 
-  * a file `hw.ans.tex`, from the file `hw.dtx` with the `questions` and
+  * a file `hw02.ans.tex`, from the file `hw02.dtx` with the `questions` and
     `answers` options turned on
 
-  * a file `hw.sol.tex`, from the file `hw.dtx` with the `questions` and
+  * a file `hw02.sol.tex`, from the file `hw02.dtx` with the `questions` and
     `solutions` options turned on
 
-Then you can compile `hw.qns.tex` into `hw.qns.pdf` and distribute it as the
-“problem sheet”.  You can distribute `hw.ans.tex` to the students as a template
+Then you can compile `hw02.qns.tex` into `hw02.qns.pdf` and distribute it as the
+“problem sheet”.  You can distribute `hw02.ans.tex` to the students as a template
 for them to edit, compile, and submit.  Once the homework is collected and
-graded, you can compile `hw.sol.tex` into `hw.sol.pdf` and distribute solutions.
+graded, you can compile `hw02.sol.tex` into `hw02.sol.pdf` and distribute solutions.
 
 The *rest* of the DocStrip file is like an interleaved set of TeX files.  Any
 unmarked line of code is included in every generated file.  But we can insert
@@ -85,14 +85,14 @@ In our example homework file, a line such as
 
     %<solutions>The answer is $6$.
 
-will not be included in `hw.qns.tex`, because that file is generated without the
+will not be included in `hw02.qns.tex`, because that file is generated without the
 `solutions` option.  Options can be combined using the `&` (and), `|` (or), and
 `!` operators.  `&` takes precedence over `|`, but parentheses are also allowed.
 So a line such as
 
     %<!answers&!solutions> Hint: Use Theorem 17.3.
 
-will be in `hw.qns.tex` (by default) but *not* in `hw.ans.tex` or `hw.sol.tex`.
+will be in `hw02.qns.tex` (by default) but *not* in `hw02.ans.tex` or `hw02.sol.tex`.
 
 Now putting guards at the start of every line would be cumbersome to type.  It
 might also make the source file hard to read, since an editor may color the
@@ -124,7 +124,7 @@ file.  Here is an example from the same homework file:
     A prime number that is equal to $2^n-1$ for some $n$ is called a \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
     %</solutions>
 
-With the configuration as above, the `hw.qns.tex` file will contain a block that
+With the configuration as above, the `hw02.qns.tex` file will contain a block that
 looks like this:
 
     \begin{question}
@@ -135,7 +135,7 @@ looks like this:
         All you need is one counterexample.  Guess and check, and be persistent.
     \end{hint}
 
-Note the lines with modified guards are stripped out.  The `hw.ans.tex` file
+Note the lines with modified guards are stripped out.  The `hw02.ans.tex` file
 will contain this block instead:
 
     \begin{question}
@@ -147,7 +147,7 @@ will contain this block instead:
     \end{answer}
 
 Note that a comment with a single percent character would get stripped out and
-discarded by DocStrip.  But a double percent gets kept.  The `hw.sol.tex` file
+discarded by DocStrip.  But a double percent gets kept.  The `hw02.sol.tex` file
 will contain this block:
 
     \begin{question}
@@ -196,10 +196,10 @@ Some workarounds for multiple variants of a document involve one or more LaTeX b
     \end{solution}
     \fi
 
-If this file is called `hw.tex`, then compiling it as shown will exclude the
+If this file is called `hw02.tex`, then compiling it as shown will exclude the
 solution.  Uncommenting the indicated line and recompiling it will include the solution.
 
-A drawback to this approach is that you don't know what options `hw.pdf` was
+A drawback to this approach is that you don't know what options `hw02.pdf` was
 compiled with.  Consider an instructor who carefully writes the solution to the
 homework questions before assigning them to the students, but carelessly forgets
 to exclude the solutions when posting the assignment PDF to the course website.
