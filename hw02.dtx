@@ -1,5 +1,6 @@
 %<*driver>
-%%!TEX TS-program = latexmk -r dtxmk.latexmkrc -pdfxe
+% !TEX program = latexmk
+% !TEX options = -r dtxmk.latexmkrc -synctex=1 -interaction=nonstopmode -file-line-error -pdf
 \input docstrip.tex
 \askforoverwritefalse
 \edef\qnspbl{\perCent\space This is a LaTeX file.  It is a text file that is compiled^^J%
@@ -154,7 +155,7 @@ Try these problems for practice:
     representation.  For example, 1331 is a palindrome.
     
     Disprove: all palidromes with two or more digits are
-    divisble by $11$.
+    divisible by $11$.
 \end{question}
 %<*answers>
 %% Student: put your answer between the next two lines.
