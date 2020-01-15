@@ -14,12 +14,16 @@ sub dtx_generated_files {
         my $dtx_file = $_;
         (my $dtx_log = $dtx_file) =~ s/.dtx$/.log/;
         system ("tex $dtx_file") if (! (-e $dtx_log) || nt($dtx_file,$dtx_log));
-        my $gen_file_str_dirty = `sed -n -e'/^Generating/,/^\\\\openout/p' "$dtx_log"`;
-        $gen_file_str_dirty =~ s/\n//g;
-        (my $gen_files_str) = $gen_file_str_dirty =~ /Generating file\(s\) (.*)\\/;
+        # slurp log file into string.  
+        # See https://www.perl.com/article/21/2013/4/21/Read-an-entire-file-into-a-string/
+        open my $fh, '<', $dtx_log or die "Can't open file $!";
+        read $fh, my $dtx_log_content, -s $fh;
+        $dtx_log_content =~ s/\n//g;
+        (my $gen_files_str) = $dtx_log_content =~ /Generating file\(s\) (.*?)\\openout/;
         push @all_files, split(/\s/, $gen_files_str);
     }
     return @all_files;
 }
 
-@default_files = dtx_generated_files(glob("*.dtx"));
+@default_files = grep { /\.tex$/ } dtx_generated_files(glob("*.dtx"));
+
