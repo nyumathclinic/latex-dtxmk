@@ -56,19 +56,18 @@ and options to set for that generated file.
 The macro `\jobname` expands to the current file name, without extension.  The
 command `\endbatchfile` ends DocStrip processing.
 
-
 For instance, the excerpt above is taken from a file called `hw02.dtx`, included
 in this repository.  The command `tex hw02.dtx` will process `hw02.dtx` with
 DocStrip.  Three files will be generated:
 
-  * a file `hw02.qns.tex`, from the file `hw02.dtx` with the `questions` option
-    turned on
+* a file `hw02.qns.tex`, from the file `hw02.dtx` with the `questions` option
+  turned on
 
-  * a file `hw02.ans.tex`, from the file `hw02.dtx` with the `questions` and
-    `answers` options turned on
+* a file `hw02.ans.tex`, from the file `hw02.dtx` with the `questions` and
+  `answers` options turned on
 
-  * a file `hw02.sol.tex`, from the file `hw02.dtx` with the `questions` and
-    `solutions` options turned on
+* a file `hw02.sol.tex`, from the file `hw02.dtx` with the `questions` and
+  `solutions` options turned on
 
 Then you can compile `hw02.qns.tex` into `hw02.qns.pdf` and distribute it as the
 “problem sheet”.  You can distribute `hw02.ans.tex` to the students as a template
@@ -121,7 +120,8 @@ file.  Here is an example from the same homework file:
         Let $p=11$.  Then $p$ is prime.  But $2^p-1 = 2^{11}-1 = 2047 = 23 \times 89$.
         So the statement is false.
     \end{solution}
-    A prime number that is equal to $2^n-1$ for some $n$ is called a \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
+    A prime number that is equal to $2^n-1$ for some $n$ is called a
+    \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
     %</solutions>
 
 With the configuration as above, the `hw02.qns.tex` file will contain a block that
@@ -158,17 +158,20 @@ will contain this block:
         Let $p=11$.  Then $p$ is prime.  But $2^p-1 = 2^{11}-1 = 2047 = 23 \times 89$.
         So the statement is false.
     \end{solution}
-    A prime number that is equal to $2^n-1$ for some $n$ is called a \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
+    A prime number that is equal to $2^n-1$ for some $n$ is called a 
+    \href{https://en.wikipedia.org/wiki/Mersenne_prime}{\emph{Mersenne Prime}}.
 
 The implementation of the environments `question`, `answer`, `hint`, and
 `solutions` have to be set up in the preambles of the generated TeX files (or in
-packages used by them).  But guards can be used in the preambles too.  In this way, we can conditionally style the document.  For instance, I prefer that the question text be upright in the questions file and italicized in the answers/solutions file.  This is done like so:
+packages used by them).  But guards can be used in the preambles too.  In this
+way, we can conditionally style the document.  For instance, I prefer that the
+question text be upright in the questions file and italicized in the
+answers/solutions file.  This is done like so:
 
     \usepackage{amsthm}
     \theoremstyle{definition}
     %<answers|solutions>\theoremstyle{plain}
     \newtheorem{question}{Question}
-
 
 #### Questions you might have right now
 
@@ -179,9 +182,10 @@ fix it in three files.  Or if you want to copy this question to another
 assignment file, you have to copy and paste from three old files to three new
 files.
 
-##### Why not just a boolean that keeps or ignores certain code and produces whichever document is needed?
+##### Why not just a boolean that and produces whichever variant is needed?
 
-Some workarounds for multiple variants of a document involve one or more LaTeX booleans.  For instance:
+Some workarounds for multiple variants of a document involve one or more LaTeX
+booleans.  For instance:
 
     \newboolean{solutions}
     \setboolean{solutions}{false}
@@ -197,7 +201,8 @@ Some workarounds for multiple variants of a document involve one or more LaTeX b
     \fi
 
 If this file is called `hw02.tex`, then compiling it as shown will exclude the
-solution.  Uncommenting the indicated line and recompiling it will include the solution.
+solution.  Uncommenting the indicated line and recompiling it will include the
+solution.
 
 A drawback to this approach is that you don't know what options `hw02.pdf` was
 compiled with.  Consider an instructor who carefully writes the solution to the
@@ -295,6 +300,7 @@ As you can probably guess, this is just a front end to the command line.
 The first option calls our config file.  If `dtxmk.latexmkrc` is not in the
 current working directory, preface it with an absolute or relative path.
 
-The last option creates PDF files with `pdflatex`.  You can change that if you want, as above.
+The last option creates PDF files with `pdflatex`.  You can change that if you
+want, as above.
 
 The other options are to help `latexmk` play nice with Visual Studio Code.  
