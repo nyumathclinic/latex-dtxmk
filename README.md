@@ -8,7 +8,7 @@ You need `latexmk` on your system.  If you have TeX-live you probably already
 have this.
 
 The simplest installation method is to copy the file `dtxmk.latexmkrc` into the
-folder of the projection you're working on.  
+folder of the project you're working on.  
 
 If you don't want to duplicate files, you can copy `dtxmk.latexmkrc` into the
 folder `$TEXMFHOME/scripts/latexmk/perl/`  Here `$TEXMFHOME` is your user TeX
