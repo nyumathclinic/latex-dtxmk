@@ -23,9 +23,9 @@ to find your local TeX tree.
 
 ### Docstrip source file
 
-Instead of a regular TeX file, your main source file will be a DocStrip file.
-It is a TeX file with a few additions and changes.  Usually the extension of a
-DocStrip file is `.dtx`.
+Instead of a regular TeX file, your main source file will be a
+[DocStrip](https://texdoc.net/pkg/docstrip) file.  It is a TeX file with a few
+additions and changes.  Usually the extension of a DocStrip file is `.dtx`.
 
 The head of your DocStrip file will set up the `docstrip` package and call
 `\generate`.  It might look like this:
