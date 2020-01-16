@@ -269,7 +269,7 @@ The `dtxmk.latexmkrc` is one of those configuration files.  It builds the set of
 generated files (by looking at the log files) and makes sure each of them are
 built.  All you need to do is
 
-    latexmk -r dtxmk.latexmkrc
+    latexmk -r dtxmk.latexmkrc foo.dtx
 
 by default, this will use `latex` to compile the generated TeX files.  If you
 would rather use `pdflatex`, add the `-pdf` option.  If you would rather use
@@ -294,13 +294,14 @@ extension.  Configure the source file to use `latexmk` with the
 `dtxmk.latexmkrc` configuration file with these lines near the top of the file:
 
     % !TEX program = latexmk
-    % !TEX options = -r dtxmk.latexmkrc -synctex=1 -interaction=nonstopmode -file-line-error -pdf
+    % !TEX options = -r dtxmk.latexmkrc -synctex=1 -interaction=nonstopmode -file-line-error -pdf %DOC%
 
 As you can probably guess, this is just a front end to the command line.  
-The first option calls our config file.  If `dtxmk.latexmkrc` is not in the
-current working directory, preface it with an absolute or relative path.
 
-The last option creates PDF files with `pdflatex`.  You can change that if you
-want, as above.
+* The first option calls our config file.  If `dtxmk.latexmkrc` is not in the
+  current working directory, preface it with an absolute or relative path.
 
-The other options are to help `latexmk` play nice with Visual Studio Code.  
+* The last option creates PDF files with `pdflatex`.  You can change that if you
+  want, as above.
+
+* The other options are to help `latexmk` play nice with Visual Studio Code.
