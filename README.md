@@ -285,7 +285,24 @@ be compiled by a separate process.
 
 ### Compiling in TeXShop
 
-Coming soon.
+This repository includes a bash script called `dtxmk.engine`.  To use it in
+TeXShop, install `dtxmk.latexmkrc` in `dtxmk.engine` in your account:
+
+    mkdir -p  ~/Library/texmf/scripts/latexmk/perl
+    cp dtxmk.latexmkrc ~/Library/texmf/scripts/latexmk/perl
+    cp dtxmk.engine ~/Library/TeXShop/Engines
+    chmod u+x ~/Library/TeXShop/Engines/dtxmk.engine
+
+Then open a DocStrip file in TeXShop.  You'll have "dtxmk" among the list of
+available engines.  Select this from the pull-down menu.  Each time you hit
+*Typeset* (or command-T), `latexmk` will run with the `dtxmk.latexmkrc`
+configuration.
+
+If you're editing a DocStrip file and want to see how one or more of the
+generated files changes, open it in TeXShop.  Rather than opening with
+command-O, "open for preview" with shift-command-O.  This skips the step of
+opening an editor window for the generated TeX file.  TeXShop watches the
+generated file's PDF form and reloads the preview window every time it changes.
 
 ### Compiling in [Visual Studio Code](https://code.visualstudio.com/)
 
