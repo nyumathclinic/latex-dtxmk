@@ -3,12 +3,17 @@
 # A TeXShop engine for latexmk on DocStrip files
 
 # INSTALLATION
-# 
-# 1. Install dtxmk.latexmrc in ~/Library/texmf/scripts/latexmk/perl/
 #
-# 2. Install this script in ~/Library/TeXShop/Engines.  Make sure it's executable.
+# 1. Install dtxmk.latexmrc in ~/Library/texmf/scripts/latexmk/perl/, or in the
+#    DocStrip file's directory.  A local one overrides the user-level one.
+#
+# 2. Install this script in ~/Library/TeXShop/Engines.  Make sure it's
+#    executable.
 
 export dtxmklatexrc="${HOME}/Library/texmf/scripts/latexmk/perl/dtxmk.latexmkrc"
+if [ -e "./dtxmk.latexmkrc" ] ; then
+    export dtxmklatexrc="./dtxmk.latexmkrc"
+fi 
 export LTMKBIN="$HOME/Library/TeXShop/bin/tslatexmk"
 export LTMKEDIT="$HOME/Library/TeXShop/bin"
 

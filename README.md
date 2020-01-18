@@ -286,10 +286,18 @@ be compiled by a separate process.
 ### Compiling in TeXShop
 
 This repository includes a bash script called `dtxmk.engine`.  To use it in
-TeXShop, install `dtxmk.latexmkrc` in `dtxmk.engine` in your account:
+TeXShop, install `dtxmk.latexmkrc` and `dtxmk.engine` in your account.  
 
     mkdir -p  ~/Library/texmf/scripts/latexmk/perl
     cp dtxmk.latexmkrc ~/Library/texmf/scripts/latexmk/perl
+
+You can put `dtxmk.latexmkrc` either in `~/Library/texmf/scripts/latexmk/perl`
+or in the same directory the DocStrip file is in (if both are present, the local
+one is chosen).
+
+You must put `dtxmk.engine` in `~/Library/TeXShop/Engines` so that TeXShop can
+find it.
+
     cp dtxmk.engine ~/Library/TeXShop/Engines
     chmod u+x ~/Library/TeXShop/Engines/dtxmk.engine
 
